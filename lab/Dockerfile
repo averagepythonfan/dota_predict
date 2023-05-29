@@ -16,4 +16,6 @@ COPY lab/entrypoint.sh entrypoint.sh
 
 RUN chmod +x entrypoint.sh
 
+RUN rm poetry.lock pyproject.toml
+
 ENTRYPOINT [ "./entrypoint.sh" ]
