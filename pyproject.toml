@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "tf-dota-pred"
+version = "0.1.0"
+description = "Dota 2 draft prediction"
+authors = ["averagepythonfan <djonvorobei@bk.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+[tool.poetry.group.lab.dependencies]
+jupyterlab = "^4.0.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
