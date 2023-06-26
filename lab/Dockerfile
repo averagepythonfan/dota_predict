@@ -10,12 +10,6 @@ COPY poetry.lock .
 COPY pyproject.toml .
 
 RUN poetry config virtualenvs.create false && \
-    poetry install --only lab
+    poetry install --no-root --only lab
 
-COPY lab/entrypoint.sh entrypoint.sh
-
-RUN chmod +x entrypoint.sh
-
-RUN rm poetry.lock pyproject.toml
-
-ENTRYPOINT [ "./entrypoint.sh" ]
+CMD jupyter lab --ip=0.0.0.0 --port=8888 --no-browser --allow-root
