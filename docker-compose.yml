@@ -60,6 +60,22 @@ services:
       - minio_s3
     networks:
       - dota_pred
+  pgadmin:
+    container_name: pgadmin4_container
+    image: dpage/pgadmin4:latest
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
+      PGADMIN_CONFIG_CONSOLE_LOG_LEVEL: 10
+    volumes:
+      - tf_dota_pred:/var/lib/pgadmin
+    depends_on:
+      - psql_server
+    ports:
+      - "6060:80"
+    networks:
+      - dota_pred
   lab:
     build:
       context: .
@@ -85,3 +101,6 @@ networks:
     external: true
     name: dota_pred
       
+volumes:
+  tf_dota_pred:
+    external: true
